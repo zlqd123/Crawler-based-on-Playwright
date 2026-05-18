@@ -1,0 +1,49 @@
+# B站监控系统配置文件
+
+# 浏览器配置
+browser:
+  channel: "chromium"           # 使用chromium通道
+  headless: false               # 开发时false，生产时true（新无头模式）
+  viewport:
+    width: 1280
+    height: 720
+  user_data_dir: "./data/browser_profile"  # 持久化登录态
+
+# WebSocket监控配置
+ws_monitor:
+  check_interval: 300           # 检测间隔（秒）
+  reconnect_timeout: 30         # 重连超时（秒）
+
+# 动态抓取配置
+dynamic:
+  cache_dir: "./data/cache"     # 缓存目录
+  max_per_user: 20              # 每个用户最多缓存动态数
+  fetch_interval: 30            # 抓取间隔（秒）
+  enable_auto_fetch: true       # 是否自动抓取新动态
+
+# 关注列表
+watchlist:
+  file: "./data/watchlist.json" # 关注列表文件路径
+  auto_subscribe: true          # API查询时自动订阅
+
+# API服务配置
+api:
+  enabled: true                 # 是否启用API
+  host: "127.0.0.1"             # 监听地址
+  port: 38787                    # 监听端口
+  delay_ms: 1500                # 请求合并延迟（毫秒）
+  endpoints:
+    user: "/api/user/{id}"      # 获取用户昵称
+    subscribe: "/api/subscribe" # 订阅用户
+    dynamic: "/api/dynamic/{id}" # 获取用户动态
+    dynamics: "/api/dynamics"   # 获取所有动态
+
+# 日志配置
+logging:
+  level: "INFO"                 # DEBUG, INFO, WARNING, ERROR
+  file: "./data/logs/monitor.log"
+  max_size_mb: 100              # 日志文件最大大小
+  backup_count: 5               # 保留备份数量
+
+# 开发模式（开发时设为true，有头模式；生产时false，新无头模式）
+development: true
