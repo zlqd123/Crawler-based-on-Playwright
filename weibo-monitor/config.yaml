@@ -1,0 +1,40 @@
+# 微博监控系统配置文件
+
+# 浏览器配置
+browser:
+  channel: "chromium"
+  viewport:
+    width: 1280
+    height: 720
+  user_data_dir: "./data/browser_profile"
+
+# 监控配置
+monitor:
+  check_interval: 5            # 检测间隔（秒）
+
+# 存储配置
+storage:
+  cache_dir: "./data/cache"
+  images_dir: "./data/images"
+  max_per_user: 20
+
+# 关注列表
+watchlist:
+  file: "./data/watchlist.json"
+
+# API服务配置
+api:
+  enabled: true
+  host: "127.0.0.1"
+  port: 39787
+  delay_ms: 1500
+
+# 日志配置
+logging:
+  level: "INFO"
+  file: "./data/logs/weibo_monitor.log"
+  max_size_mb: 10
+  backup_count: 2
+
+# 开发模式: true=有头浏览器 false=无头
+development: false
